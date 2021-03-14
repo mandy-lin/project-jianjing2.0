@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>健璟內部管理系統</title>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<meta charset="utf-8">
+</head>
+ 
+<body>
+<aside style="float:left;width:240px;">
+<ul>
+    <li><a href="contract_list.html">合約</a></li>
+        <ul><a href="contract_add.html">新增合約</a></ul>
+    <li><a href="client_list.html">客戶</a></li>
+        <ul><a href="client_add.html">新增客戶</a></ul>
+        <ul><a href="client_list_miss.html">流失客戶</a></ul>
+    <li><a href="maintain_list.html">保養</a></li>
+        <ul><a href="maintain_add.php">新增保養</a></ul>
+    <li><a href="price_list.html">報價</a></li>
+        <ul><a href="price_add.html">新增報價</a></ul>
+    <li><a href="fix_list.html">維修</a></li>
+        <ul><a href="fix_add.html">新增維修</a></ul>
+  </ul>
+</aside>     
+    <form id="form1" name="form1" method="post" action="" class='card-header'> 
+    <input name="keyword" type="search" placeholder="請輸入大樓名稱" class="card-search"/>
+    <select>
+        <option value=''>全部</option>
+        <option value='未送出'>未送出</option>
+        <option value='已送出'>已送出</option>
+        <option value='已確認'>已確認</option>
+    </select>     
+    <input id="search" name="search" type="submit" value="搜尋" class='card-btn'>
+    </form>
+    <table border="1" id="myTable">
+    <caption>報價列表</caption>
+        <tr>
+            <td>大樓名稱</td>
+            <td>報價日期</td>
+            <td>狀態</td>
+            <td>詳細</td>        
+        </tr>
+        <tr>
+            <td>台中大國</td>
+            <td>109/03/16</td>
+            <td>未送出</td>
+            <td><input type="button" value="詳細" onclick="location.href='price_detail.html'"></td>
+        </tr>
+        <tr>
+            <td>藝術大街</td>
+            <td>109/03/01</td>
+            <td>已送出</td>
+            <td><input type="button" value="詳細" onclick="location.href='price_detail.html'"></td>
+        </tr>
+         <tr>
+            <td>大城喜市</td>
+            <td>109/01/22</td>
+            <td>已確認</td>
+            <td><input type="button" value="詳細" onclick="location.href='price_detail.html'"></td>
+        </tr>
+    </table>
+    
+    
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    
+</body>    
+</html>

@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>健璟內部管理系統</title>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<meta charset="utf-8">
+</head>
+    
+<body>
+<aside style="float:left;width:240px;">
+<ul>
+    <li><a href="contract_list.html">合約</a></li>
+        <ul><a href="contract_add.html">新增合約</a></ul>
+    <li><a href="client_list.html">客戶</a></li>
+        <ul><a href="client_add.html">新增客戶</a></ul>
+        <ul><a href="client_list_miss.html">流失客戶</a></ul>
+    <li><a href="maintain_list.html">保養</a></li>
+        <ul><a href="maintain_add.php">新增保養</a></ul>
+    <li><a href="price_list.html">報價</a></li>
+        <ul><a href="price_add.html">新增報價</a></ul>
+    <li><a href="fix_list.html">維修</a></li>
+        <ul><a href="fix_add.html">新增維修</a></ul>
+  </ul>
+</aside>
+<div id="content" style="float:left;width:720px;">
+    <table border="1" id="myTable">
+    <caption>歷史合約</caption>
+        <tr><td>甲方</td><td colspan="4">安心成家</td>
+        </tr>
+        <tr><td>設備名稱</td><td>日期</td><td>數量</td><td>單價</td><td>總價</td></tr>
+        <tr><td>機械式停車設備</td><td>每月</td><td>20</td><td>360</td><td>7200</td></tr>
+        <tr><td>總金額</td><td colspan="2">7200</td><td colspan="2">未含稅</td>
+        </tr>
+        <tr><td>優惠總金額</td><td colspan="4"></td>
+        </tr>
+        <tr><td>實施日期</td><td colspan="4">108/01/01至108/12/31</td></tr>
+        <tr><td>保養次數</td><td colspan="4">每月一次</td></tr>
+        <tr><td>責任</td><td colspan="4">附表全責</td></tr>
+        <tr><td>備註</td><td colspan="4"></td>
+        </tr>
+        <tr><td>附表全責的圖</td><td colspan="4"></td></tr>
+        <tr><td>合約電子檔</td><td colspan="4"></td></tr>
+       
+    </table>
+    <form id="form1" name="form1" method="post" action="">
+          <input type="button" onclick="history.back()" value="返回">
+    </form>
+    </div>   
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    
+</body>    
+</html>

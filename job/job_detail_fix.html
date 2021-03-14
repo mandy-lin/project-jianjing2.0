@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>健璟內部管理系統</title>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script> 
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<meta charset="utf-8">
+<script>
+function edit(b){
+  var t=document.getElementById("edit");
+  if ($("#employee2").prop('disabled') == true) {
+     
+  $(".readonly").removeAttr("readonly");
+   $("#employee1").removeAttr("disabled");
+   $("#employee2").removeAttr("disabled");
+   t.value="完成"; 
+    }
+  else{
+  
+   $(".readonly").attr("readonly", "readonly");
+   $("#employee1").attr("disabled","disabled");
+   $("#employee2").attr("disabled","disabled");
+    t.value="編輯"; 
+    }
+    
+}
+
+</script>
+</head>
+<body>
+<aside style="float:left;width:240px;">
+<ul>
+    <il>合約</il>
+    <ul>
+      <il><a href="contract.html">新增合約</a></il>
+    </ul>
+    <li>客戶</li>
+      <ul>
+        <a href="client_add0221.html">新增客戶</a>
+      </ul>
+    <li>保養</li>
+      <ul>
+        <li><a href="maintain.php">保養</a></li>
+      </ul>
+    <!--li><a href="job_list.html">派工</a></li>
+      <ul>
+        <li><a href="job_parking.html">停車派工</a></li>
+        <li><a href="job_elevator.html">電梯派工</a></li>
+        <li><a href="job_fix.html">維修派工</a></li>
+      </ul-->
+    <li><a href="price.html">報價</a></li>
+    <li><a href="fix.html">維修</a></li>
+  </ul>
+</aside>
+
+
+<div id="contect" style="float:left;width:720px;">
+  <h2>派工單(詳細)(維修)</h2>
+  <p>日期:<input class="readonly" type="date" readonly="readonly">服務人員:<select id='employee1' disabled="disabled"><option>請選擇</option><option>洪歆益</option><option>劉繹豪</option><option>曾公鳴</option><option>徐嘉偉</option><option>高得瑋</option><option>陳弘翔</option><option selected="selected">黃國賢</option>444aw<option>陳品翰</option><option>李聖偉</option><option>陳松懋</option><option>張苡偉</option><option>鍾健文</option></select><select id='employee2' disabled="disabled"><option>請選擇</option><option>洪歆益</option><option selected="selected">劉繹豪</option><option>曾公鳴</option><option>徐嘉偉</option><option>高得瑋</option><option>陳弘翔</option><option>黃國賢</option><option>陳品翰</option><option>李聖偉</option><option>陳松懋</option><option>張苡偉</option><option>鍾健文</option></select></p>
+
+  <p></p>
+  <p>大樓名稱：<input type="text" value="張公館" readonly="readonly"><br>工作項目：<textarea cols="52" rows="10" class="readonly" readonly="readonly">一、
+二、
+三、
+四、</textarea><br></p>
+ 
+    <p align="right"><input id="edit" type="button" value="編輯" onclick="edit(this)">        
+     </div>
+</body>    
+</html>

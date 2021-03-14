@@ -1,0 +1,315 @@
+<html>
+<head>
+<link rel="icon" href="../img/jj.ico" type="image/x-icon" />
+<title>健璟內部管理系統</title>
+<!--link rel=stylesheet href=/project/css/home.css>
+<link rel=stylesheet href=/project/css/table-client.css   
+}-->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style type="text/css">
+ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+ul.pagination li 
+{display: inline;}
+
+ul.pagination li a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    font-size: 18px;
+}
+
+ul.pagination li a.active {
+    background-color: #eee;
+    color: black;
+    border: 1px solid #ddd;
+}
+
+ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+</style>
+<script>
+function one(){
+var t=document.getElementById("edit");
+  if ($("#receipt").prop('disabled') == true){
+      $(".editable").removeAttr("readonly");
+      $(".editable").removeAttr("style","border-style:none");
+      $("#receipt").removeAttr("disabled");
+      t.value="完成";
+  }else{
+    $(".editable").attr("readonly","readonly");
+      $(".editable").attr("style","border-style:none");
+      $("#receipt").attr("disabled","disabled");
+      t.value="編輯";
+  }
+  
+}
+function loadTab(obj,n){
+var layer;
+eval('layer=\'S'+n+'\'');
+
+//將 Tab 標籤樣式設成 Blur 型態
+var tabsF=document.getElementById('nav').getElementsByTagName('li');
+for (var i=0;i<tabsF.length;i++){
+    tabsF[i].setAttribute('id',null);
+     eval('document.getElementById(\'S'+(i+1)+'\').style.display=\'none\'')
+}
+
+//變更分頁標題樣式
+obj.parentNode.setAttribute('id','current');
+obj.setAttribute('style',' background:#e4e1d8');
+document.getElementById(layer).style.display='inline';
+ 
+}
+
+/*function aaaa(i){
+var tr=i.parentNode.parentNode.rowIndex;
+//alert(tr);
+if (i.value=="展開▼"){
+$("#contract tr").eq(tr+1).removeAttr("style","display:none");
+i.value="收起▲";
+}else{
+$("#contract tr").eq(tr+1).attr("style","display:none");
+i.value="展開▼";
+}
+}*/
+
+</script>
+</head>
+<body>
+<aside style="float:left;width:240px;">
+<ul>
+    <li><a href="contract_list.html">合約</a></li>
+        <ul><a href="contract_add.html">新增合約</a></ul>
+    <li><a href="client_list.html">客戶</a></li>
+        <ul><a href="client_add.html">新增客戶</a></ul>
+        <ul><a href="client_list_miss.html">流失客戶</a></ul>
+    <li><a href="maintain_list.html">保養</a></li>
+        <ul><a href="maintain_add.php">新增保養</a></ul>
+    <li><a href="price_list.html">報價</a></li>
+        <ul><a href="price_add.html">新增報價</a></ul>
+    <li><a href="fix_list.html">維修</a></li>
+        <ul><a href="fix_add.html">新增維修</a></ul>
+  </ul>
+</aside>
+<div id="nav">
+  <ul class="pagination">
+    <li id="current"><a href="javascript://" onclick="loadTab(this,1);"><span>基本資料</span></a></li>
+    <li><a href="javascript://" onclick="loadTab(this,2);"><span>合約</span></a></li>
+    <li><a href="javascript://" onclick="loadTab(this,3);"><span>車區</span></a></li>
+    <li><a href="javascript://" onclick="loadTab(this,4);"><span>維修紀錄</span></a></li>
+    <li><a href="javascript://" onclick="loadTab(this,5);"><span>保養紀錄</span></a></li>
+    <li><a href="javascript://" onclick="loadTab(this,6);"><span>報價紀錄</span></a></li>
+  </ul>
+</div>
+<div id="tabsC">
+<div id="S1" style="display:inline;">
+
+  <form>
+  <fieldset>
+  <p><h2>基本資料</h2>
+    <p>大樓名稱：<input class="editable" type="text" style="border-style:none" readonly="readonly"></p>
+    <p>合約到期日：<input class="editable" type="date" style="border-style:none" readonly="readonly"></p>
+    <p>聯絡電話：<input class="editable" type="text" style="border-style:none" readonly="readonly"><input class="editable" type="text" style="border-style:none" readonly="readonly"></p>
+    <p>機種<input class="editable" type="text" style="border-style:none" readonly="readonly">保養費<input class="editable" type="text" style="border-style:none" readonly="readonly">責任<input class="editable" type="text" style="border-style:none" readonly="readonly"><br>機種<input class="editable" type="text" style="border-style:none" readonly="readonly">保養費<input class="editable" type="text" style="border-style:none" readonly="readonly">責任<input class="editable" type="text" style="border-style:none" readonly="readonly"><button class="editable" onclick="adddevice(this)" style="display:none">新增</button></p>
+    <p>地址：<input class="editable" type="text" style="width:50px;border-style:none" readonly="readonly"> <input class="editable" type="text" style="border-style:none" readonly="readonly"></p>
+    <p>主委：<input class="editable" type="text" style="border-style:none" readonly="readonly">電話：<input class="editable" type="text" style="border-style:none" readonly="readonly"><br>其他聯絡方式：<textarea class="editable" style="border-style:none" readonly="readonly"></textarea></p>
+    <p>財委：<input class="editable" type="text" style="border-style:none" readonly="readonly">電話：<input class="editable" type="text" style="border-style:none" readonly="readonly"><br>其他聯絡方式：<textarea class="editable" style="border-style:none" readonly="readonly"></textarea></p>
+    <p>監委：<input class="editable" type="text" style="border-style:none" readonly="readonly">電話：<input class="editable" type="text" style="border-style:none" readonly="readonly"><br>其他聯絡方式：<textarea class="editable" style="border-style:none" readonly="readonly"></textarea></p>
+    <p>總幹事：<input class="editable" type="text" style="border-style:none" readonly="readonly">電話：<input class="editable" type="text" style="border-style:none" readonly="readonly"><br>其他聯絡方式：<textarea class="editable" style="border-style:none" readonly="readonly"></textarea></p>
+    <p>管理員：<input class="editable" type="text" style="border-style:none" readonly="readonly">電話：<input class="editable" type="text" style="border-style:none" readonly="readonly"><br>其他聯絡方式：<textarea class="editable" style="border-style:none" readonly="readonly"></textarea></p>
+    <p>其他負責人：<input class="editable" type="text" style="border-style:none" readonly="readonly">電話：<input class="editable" type="text" style="border-style:none" readonly="readonly"><br>其他聯絡方式：<textarea class="editable" style="border-style:none" readonly="readonly"></textarea></p>
+    <p>收款方式：<textarea class="editable" style="border-style:none" readonly="readonly"></textarea></p>
+    <p>統編：<input class="editable" type="text" style="border-style:none" readonly="readonly"></p>
+    <p>發票：<select id="receipt" disabled="disabled">
+        <option value=''>選擇發票類型</option>
+        <option value='二聯式' selected>二聯式</option>
+        <option value='三聯式'>三聯式</option>
+        </select></p>
+    <p>備註：<textarea class="editable" style="border-style:none" readonly="readonly"></textarea></p>
+    <p>零件規格：<textarea class="editable" style="border-style:none" readonly="readonly"></textarea></p>
+    <p>平面圖：<img src="#"></p>
+    <p align="right"><input id="edit" type="button" value="編輯" onclick="one()"></p>
+  </fieldset>
+  </form>
+</div>
+
+<div id="S2" style="display:none;">
+<p><h2>合約</h2>
+  <table id="contract" border="1" width="400">
+    <tr>
+      <th>設備</th>
+      <th>到期日</th>
+      <th>備註</th>
+    </tr>
+    <tr>
+      <td>停車設備</td>
+      <td>109/10/30</td>
+      <td><input type="button" value="展開▼" onclick="document.all.child1.style.display=(document.all.child1.style.display =='none')?'':'none';this.value=='展開▼'?this.value='收起▲':this.value='展開▼'" ></td>
+    </tr>
+    <tr id="child1" style="display:none">
+      <td colspan="3" >
+      <table>
+        <tr>
+          <td>設備名稱</td>
+          <td>日期</td>
+          <td>數量</td>
+          <td>單價</td>
+          <td>總價</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>機械停車設備</td>
+          <td>每月</td>
+          <td>30</td>
+                  <td>$250</td>
+                  <td>$7500</td>
+        </tr>
+        <tr id="Total">
+          <td>總金額</td>
+          <td colspan="3">$7500</td>
+          <td colspan="2"><input type="checkbox">未含稅</td>
+        </tr>
+        <tr>
+          <td>實施日期</td>
+          <td colspan="5"><input type="date">至<input type="date"></td>
+        </tr>
+        <tr>
+          <td>保養次數</td>
+          <td colspan="5">每月一次</td></tr>
+        <tr>
+          <td>備註</td>
+          <td colspan="5"><textarea></textarea></td>
+        </tr>
+        <tr>
+          <td>附表全責的圖</td>
+          <td colspan="5"><input type="file"></td>
+        </tr>
+        <tr>
+          <td>合約電子檔</td>
+          <td colspan="5"><input type="file"></td>
+        </tr>
+        </table>
+  </td>
+    </tr>
+    <tr>
+        <td>電梯</td>
+        <td>109/10/30</td>
+        <td><input type="button" value="展開▼" onclick="document.all.child2.style.display=(document.all.child2.style.display =='none')?'':'none';this.value=='展開▼'?this.value='收起▲':this.value='展開▼'"></td>
+    </tr>
+    <tr id="child2" style="display:none">
+      <td colspan="3" >
+      <table>
+        <tr>
+          <td>設備名稱</td>
+          <td>日期</td>
+          <td>數量</td>
+          <td>單價</td>
+          <td>總價</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>電梯</td>
+          <td>每月</td>
+          <td>1</td>
+          <td>$500</td>
+          <td>$500</td>
+        </tr>
+        <tr id="Total">
+          <td>總金額</td>
+          <td colspan="3">$500</td>
+          <td colspan="2"><input type="checkbox">未含稅</td>
+        </tr>
+        <tr>
+          <td>實施日期</td>
+          <td colspan="5"><input type="date">至<input type="date"></td>
+        </tr>
+        <tr>
+          <td>保養次數</td>
+          <td colspan="5">每月一次</td></tr>
+        <tr>
+          <td>備註</td>
+          <td colspan="5"><textarea></textarea></td>
+        </tr>
+        <tr>
+          <td>附表全責的圖</td>
+          <td colspan="5"><input type="file"></td>
+        </tr>
+        <tr>
+          <td>合約電子檔</td>
+          <td colspan="5"><input type="file"></td>
+        </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+<div id="S3" style="display:none;">
+  <p><a href="parking_detail.html">A#01-06</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="parking_detail.html">A#07-12</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="parking_detail.html">A#013-18</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="parking_detail.html">A#19-24</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="parking_detail.html">A#25-30</a></p>
+</div>
+<div id="S4" style="display:none;">
+<p><h2>維修紀錄</h2>
+  <table border=1px style="width:480px">
+    <tr>
+      <th>日期</th>
+      <th>設備</th>
+      <th>負責人員</th>
+      <th>備註</th>
+    </tr>
+    <tr>
+      <td>108/03/02</td>
+      <td>停車設備</td>
+      <td>張苡偉</td>
+      <td><input type="button" value="詳細" onclick="location.href='fix_detail.html'"></td>
+    </tr>
+  </table>
+</div>
+<div id="S5" style="display:none;">
+<p><h2>保養紀錄</h2>
+<table border=1px style="width:500px">
+  <tr>
+    <th>日期</th>
+    <th>設備</th>
+    <th>負責人員</th>
+    <th>備註</th>
+  </tr>
+  <tr>
+    <td>108/02/22</td>
+    <td>停車設備</td>
+    <td>曾公鳴/陳弘翔</td>
+    <td><input type="button" value="詳細" onclick="location.href='maintain_detail.php'"></td>
+  </tr>
+  
+</table>
+</div>
+<div id="S6" style="display:none;">
+<p><h2>報價紀錄</h2>
+  <table border=1px style="width:500px">
+    <tr>
+      <th>日期</th>
+      <th>狀態</th>
+      <th>金額</th>
+      <th>備註</th>
+    </tr>
+    <tr>
+      <td>108/03/01</td>
+      <td>已送出</td>
+      <td>$5200</td>
+      <td><input type="button" value="詳細" onclick="location.href='price_detail.html'"></td>
+    </tr>
+  </table>
+
+</div>
+
+</div>
+
+
+</body>
+</html>

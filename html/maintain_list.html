@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>健璟內部管理系統</title>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<meta charset="utf-8">
+</head>
+<aside style="float:left;width:240px;">
+<ul>
+    <li><a href="contract_list.html">合約</a></li>
+        <ul><a href="contract_add.html">新增合約</a></ul>
+    <li><a href="client_list.html">客戶</a></li>
+        <ul><a href="client_add.html">新增客戶</a></ul>
+        <ul><a href="client_list_miss.html">流失客戶</a></ul>
+    <li><a href="maintain_list.html">保養</a></li>
+        <ul><a href="maintain_add.php">新增保養</a></ul>
+    <li><a href="price_list.html">報價</a></li>
+        <ul><a href="price_add.html">新增報價</a></ul>
+    <li><a href="fix_list.html">維修</a></li>
+        <ul><a href="fix_add.html">新增維修</a></ul>
+  </ul>
+</aside> 
+<body>
+    <form id="form1" name="form1" method="post" action="" class='card-header'> 
+    <input type="search" placeholder="請輸入大樓名稱">
+    <input type=month>
+    <select>
+        <option value=''>全部</option>
+        <option value='已填單'>已填單</option>
+        <option value='未填單'>未填單</option>
+    </select>     
+    <input  type="submit" value="搜尋" >
+    </form>
+    <marquee behavior="behavior" width="200" loop="5" style="color:red;">XX大樓未填單</marquee>
+    <table border="1" id="myTable">
+    <caption>保養列表</caption>
+        <tr>
+            <td>保養日期</td>
+            <td>大樓名稱</td>
+            <td>設備名稱</td>
+            <td>詳細</td>        
+        </tr>
+        <tr>
+            <td>109/02</td>
+            <td>台中大國</td>
+            <td>機械式停車設備</td>
+            <td><input type="button" value="詳細" onclick="location.href='maintain_detail.php'"></td>
+        </tr>
+        <tr>
+            <td>109/02</td>
+            <td>藝術大街</td>
+            <td>機械式停車設備</td>
+            <td><input type="button" value="詳細" onclick="location.href='maintain_detail.php'"></td>
+        </tr>
+         <tr>
+             <td>109/02</td>
+             <td>大城喜市</td>
+             <td>機械式停車設備</td>
+             <td><input type="button" value="詳細" onclick="location.href='maintain_detail.php'"></td>
+        </tr>
+    </table>
+    
+    
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    
+</body>    
+</html>

@@ -1,0 +1,133 @@
+<html>
+<head>
+<title>健璟內部管理系統</title>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://rawgithub.com/indrimuska/jquery-editable-select/master/dist/jquery-editable-select.min.css">    
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://rawgithub.com/indrimuska/jquery-editable-select/master/dist/jquery-editable-select.min.js"></script>  
+ 
+<script>
+function addRow(r) {
+   $("#Total").before("<tr><td><select><option value=''>服務編號</option></select><input type='text'></td><td><input type='number' onchange='Sum(this)' name='amount[]'></td><td><input type='number' onchange='Sum(this)'  name='price[]'></td><td><input type='number' name='subtotal[]'><button onclick='deleteRow(this)'>刪除</button></td></tr>"); 
+}
+//新增一行
+function deleteRow(r){
+  var tab = document.getElementById("myTable");
+    var i=r.parentNode.parentNode.rowIndex;
+    tab.deleteRow(i);
+    var total=0;
+    $('input[name="subtotal[]"]').each(function(){
+        total += parseInt($(this).val())
+    });
+    $('#total').attr("value",total);
+    console.log('t',total);
+}
+//加總
+function Sum(r){
+    var i=r.parentNode.parentNode;
+    var price=$(i).find('input[name="price[]"]').val();
+    
+    console.log('p',price);
+    var amount=$(i).find('input[name="amount[]"]').val();
+    console.log('a',amount);
+    var sum=price*amount;
+    console.log('s',sum);
+    $(i).find('input[name="subtotal[]"]').attr("value",sum);
+    
+    var total=0;
+    $('input[name="subtotal[]"]').each(function(){
+        total += parseInt($(this).val())
+    });
+    $('#total').attr("value",total);
+    console.log('t',total);
+}
+//選擇客戶    
+$(document).ready(function() {
+    $('#clientname').editableSelect().on('select.editable-select', function (e, li) {
+        console.log(li.text());
+        $("#myTable").css('display','');
+        $('#contractname').val(li.text());
+    });
+}); 
+</script>
+    
+<body>
+<aside style="float:left;width:240px;">
+<ul>
+    <li><a href="contract_list.html">合約</a></li>
+        <ul><a href="contract_add.html">新增合約</a></ul>
+    <li><a href="client_list.html">客戶</a></li>
+        <ul><a href="client_add.html">新增客戶</a></ul>
+        <ul><a href="client_list_miss.html">流失客戶</a></ul>
+    <li><a href="maintain_list.html">保養</a></li>
+        <ul><a href="maintain_add.php">新增保養</a></ul>
+    <li><a href="price_list.html">報價</a></li>
+        <ul><a href="price_add.html">新增報價</a></ul>
+    <li><a href="fix_list.html">維修</a></li>
+        <ul><a href="fix_add.html">新增維修</a></ul>
+  </ul>
+</aside> 
+<div id="content" style="float:left;width:720px;">
+    <select id="clientname">
+        <option value='北京王府'>北京王府</option>
+        <option value='寶新敦品'>寶新敦品</option>
+    </select>
+    <table border="1" id="myTable" style="display: none;">
+    <caption>報價單</caption>
+        <tr>
+        <td>報價日期</td><td><input type="date"></td>
+        <td>狀態</td><td><select>
+            <option value='未送出'>未送出</option>
+            <option value='已送出'>已送出</option>
+            <option value='已確認'>已確認</option>
+            </select>
+        </td>
+        </tr>
+        <tr>
+        <td>謹致</td><td colspan="3"><input id="contractname" value="" readonly="readonly" style="border:0px;outline:none;"></td>
+        </tr>
+        <tr><td>設備名稱</td>
+            <td>數量</td>
+            <td>單價</td>
+            <td>總價</td>
+        </tr>
+        <tr><td><select>
+            <option value=''>服務編號</option>
+            <option value=''>全車區</option><!--車位才有-->
+            <option value=''>123</option>
+            <option value=''>456</option>
+            </select><input type="text"></td>
+            <td><input type="number" onchange="Sum(this)" name="amount[]"></td>
+            <td><input type="number" onchange="Sum(this)" name="price[]"></td>
+            <td><input type="number" name="subtotal[]"><button onclick="addRow(this)">新增</button></td>
+        </tr>
+        <tr id="Total">
+        <td >總金額</td>
+        <td colspan="3"><input type="number" id="total"><input type="checkbox">未含稅</td>
+        </tr>
+        <tr>
+        <td>優惠總金額</td><td  colspan="4"><input type="number" ></td>
+        </tr>
+        <tr><td>備註</td><td colspan="4" ><textarea></textarea></td></tr>
+        <tr><td colspan="5"><textarea style="border:0;outline:none;resize : none;width:100%;height:200px;">一、本報價單有效期限10天。
+二、更新之零組件均享有一年保固服務。
+三、上列報價之內容為現場之缺失，為維護設備使用之安全，建議管委會、設備所有權人同意予以修繕，以避免因零件故障老化導致損害。
+四、付款方式：完工驗收以現金支付。
+五、經辦人:
+六、如同意施工請簽名確認後，傳真或寄回本公司，以便本公司作業，謝謝!
+   公司地址:台中市太平區長安路233巷6號
+   電　　話:(04)2391-3013
+   傳　　真:(04)2391-3010
+                </textarea>
+            </td>
+        </tr>
+        <tr><td colspan="5"><input type="button" value="新增"></td></tr>
+    </table>
+    
+    </div> 
+    
+   
+</body>    
+</html>

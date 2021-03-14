@@ -1,0 +1,176 @@
+<html>
+<head>
+<title>健璟內部管理系統</title>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://rawgithub.com/indrimuska/jquery-editable-select/master/dist/jquery-editable-select.min.css">    
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://rawgithub.com/indrimuska/jquery-editable-select/master/dist/jquery-editable-select.min.js"></script>     
+
+<script>
+//選擇客戶    
+$(document).ready(function() {
+    $('#clientname').editableSelect().on('select.editable-select', function (e, li) {
+        console.log(li.text());
+        $("#myTable").css('display','');
+        $('#contractname').val(li.text());
+    });
+});     
+//新增項目
+function addRow(r) {
+   if (r==1){
+    $("#components").before("<tr><td><select><option value=''>服務編號</option><option value=''>123</option><option value=''>456</option></select></td><td colspan='4'><input type='text' style='width: 100%'></td></tr>");
+}else if(r==2){
+     $("#staff").before("<tr><td><select><option value=''>服務編號</option><option value=''>123</option><option value=''>456</option></select></td><td><input type='text'></td><td><input type='number'></td><td><input></td></tr>");
+    }
+}    
+</script>     
+<body>
+<aside style="float:left;width:240px;">
+<ul>
+    <li><a href="contract_list.html">合約</a></li>
+        <ul><a href="contract_add.html">新增合約</a></ul>
+    <li><a href="client_list.html">客戶</a></li>
+        <ul><a href="client_add.html">新增客戶</a></ul>
+        <ul><a href="client_list_miss.html">流失客戶</a></ul>
+    <li><a href="maintain_list.html">保養</a></li>
+        <ul><a href="maintain_add.php">新增保養</a></ul>
+    <li><a href="price_list.html">報價</a></li>
+        <ul><a href="price_add.html">新增報價</a></ul>
+    <li><a href="fix_list.html">維修</a></li>
+        <ul><a href="fix_add.html">新增維修</a></ul>
+  </ul>
+</aside>
+<div id="content" style="float:left;width:720px;">
+    <select id="clientname">
+        <option value='北京王府'>北京王府</option>
+        <option value='寶新敦品'>寶新敦品</option>
+    </select>
+    <table border="1" id="myTable" style="border:1px solid;display:none;">
+    <caption>維修紀錄表</caption>
+        <tr>
+        <td><input id="contractname" value="" style="border:0;outline:none;"></td><td><select>
+            <option value='機械停車位'>機械停車位</option>
+            <option value='汽車升降機'>汽車升降機</option>
+            <option value='電梯'>電梯</option>
+            <option value='貨梯'>貨梯</option>
+            </select></td>
+        <td>維修日期</td><td colspan="2"><input type="date"></td>
+        </tr>
+        <tr><td>故障情形</td><td colspan="4"><textarea style="width: 100%;height: auto;"></textarea></td></tr>
+        <tr><td>故障原因</td><td colspan="4"><textarea style="width: 100%"></textarea></td></tr>
+        
+        <tr><td colspan="5" style="text-align: center;">維修內容<button onclick="addRow(1)">新增維修內容項目</button></td></tr>
+        <tr><td><select>
+            <option value=''>服務編號</option>
+            <option value=''>123</option>
+            <option value=''>456</option>            
+            </select>
+            </td><td colspan="4">
+            <input type="text" style="width: 100%"></td>
+        </tr>
+        <tr><td><select>
+            <option value=''>服務編號</option>
+            <option value=''>123</option>
+            <option value=''>456</option>            
+            </select>
+            </td><td colspan="4">
+            <input type="text" style="width: 100%"></td>
+        </tr>
+        <tr><td><select>
+            <option value=''>服務編號</option>
+            <option value=''>123</option>
+            <option value=''>456</option>            
+            </select>
+            </td><td colspan="4">
+            <input type="text" style="width: 100%"></td>
+        </tr>
+        <tr><td><select>
+            <option value=''>服務編號</option>
+            <option value=''>123</option>
+            <option value=''>456</option>            
+            </select>
+            </td><td colspan="4">
+            <input type="text" style="width: 100%"></td>
+        </tr>
+        <tr><td><select>
+            <option value=''>服務編號</option>
+            <option value=''>123</option>
+            <option value=''>456</option>            
+            </select>
+            </td><td colspan="4">
+            <input type="text" style="width: 100%"></td>
+        </tr>
+        <tr id="components"><td colspan="5" style="text-align: center;">更新零件<button onclick="addRow(2)">新增更新零件項目</button></td></tr>
+        <tr><td colspan="2">內容</td><td>價格</td><td>備註</td></tr>
+        <tr><td><select>
+            <option value=''>服務編號</option>
+            <option value=''>123</option>
+            <option value=''>456</option>            
+            </select>
+            </td><td>
+            <input type="text"></td>
+            <td><input type="number"></td><td><input></td></tr>
+        <tr><td><select>
+            <option value=''>服務編號</option>
+            <option value=''>123</option>
+            <option value=''>456</option>            
+            </select>
+            </td><td>
+            <input type="text"></td>
+            <td><input type="number"></td><td><input></td></tr>
+        <tr><td><select>
+            <option value=''>服務編號</option>
+            <option value=''>123</option>
+            <option value=''>456</option>            
+            </select>
+            </td><td>
+            <input type="text"></td>
+            <td><input type="number"></td><td><input></td></tr>
+        <tr><td><select>
+            <option value=''>服務編號</option>
+            <option value=''>123</option>
+            <option value=''>456</option>            
+            </select>
+            </td><td>
+            <input type="text"></td>
+            <td><input type="number"></td><td><input></td></tr>
+        <tr><td><select>
+            <option value=''>服務編號</option>
+            <option value=''>123</option>
+            <option value=''>456</option>            
+            </select>
+            </td><td>
+            <input type="text"></td>
+            <td><input type="number"></td><td><input></td></tr>
+        <tr id="staff"><td>服務人員</td>
+        <td colspan="4"><select>
+            <option value=''>工作人員</option>
+            <option value='黃國賢'>黃國賢</option>
+            <option value='劉繹豪'>劉繹豪</option>
+            <option value='洪歆益'>洪歆益</option>
+            <option value='徐嘉偉'>徐嘉偉</option>
+            <option value='李嘉宏'>李嘉宏</option>
+            <option value='陳品翰'>陳品翰</option>
+            <option value='陳松懋'>陳松懋</option></select>
+            <select>
+            <option value=''>工作人員</option>
+            <option value='黃國賢'>黃國賢</option>
+            <option value='劉繹豪'>劉繹豪</option>
+            <option value='洪歆益'>洪歆益</option>
+            <option value='徐嘉偉'>徐嘉偉</option>
+            <option value='李嘉宏'>李嘉宏</option>
+            <option value='陳品翰'>陳品翰</option>
+            <option value='陳松懋'>陳松懋</option></select>
+        </td>
+        </tr>
+        <tr><td>維修圖</td><td colspan="4"><input type="file"></td></tr>
+        <tr><td colspan="4"><input type="button" value="新增"></td></tr>
+    </table>
+
+    </div>  
+    
+    
+</body>    
+</html>

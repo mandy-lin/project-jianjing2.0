@@ -1,0 +1,186 @@
+<html>
+<head>
+<link rel="icon" href="../img/jj.ico" type="image/x-icon" />
+<title>健璟內部管理系統</title>
+<link rel=stylesheet href=/project/css/home.css>
+<link rel=stylesheet href=/project/css/table-client.css>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<meta charset="utf-8">
+</head>
+<body>
+
+<aside style="float:left;width:240px;">
+<ul>
+    <il>合約</il>
+    <ul>
+      <il><a href="contract.html">新增合約</a></il>
+    </ul>
+    <li>客戶</li>
+      <ul>
+        <a href="client_add0221.html">新增客戶</a>
+      </ul>
+    <li>保養</li>
+      <ul>
+        <li><a href="maintain.php">保養</a></li>
+      </ul>
+    <!--li><a href="job_list.html">派工</a></li>
+      <ul>
+        <li><a href="job_parking.html">停車派工</a></li>
+        <li><a href="job_elevator.html">電梯派工</a></li>
+        <li><a href="job_fix.html">維修派工</a></li>
+      </ul-->
+    <li><a href="price.html">報價</a></li>
+    <li><a href="fix.html">維修</a></li>
+  </ul>
+</aside>
+<div id="content" style="float:left;width:720px;">
+<h2>派工列表</h2>
+<p>停車派工</p>
+<table id="parking_job" border=1px>
+  <tr>
+    <th>派工日期</th>
+    <th>服務人員</th>
+    <th>是否完成</th>
+    <th>備註</th>
+  </tr>
+  <tr>
+    <td>108/03/04</td>
+    <td>1/2</td>
+    <td>否</td>
+    <td><input type="button" value="詳細" onclick="location.href='job_detail.html'"></td>
+  </tr>
+  <tr>
+    <td>108/03/04</td>
+    <td>3/4</td>
+    <td>否</td>
+    <td><input type="button" value="詳細" onclick="location.href='job_detail.html'"></td>
+  </tr>
+  <tr>
+    <td>108/03/04</td>
+    <td>5/6</td>
+    <td>否</td>
+    <td><input type="button" value="詳細" onclick="location.href='job_detail.html'"></td>
+  </tr>
+  <tr>
+    <td>108/03/05</td>
+    <td>2/6</td>
+    <td>否</td>
+    <td><input type="button" value="詳細" onclick="location.href='job_detail.html'"></td>
+  </tr>
+  <tr>
+    <td>108/03/05</td>
+    <td>3/1</td>
+    <td>否</td>
+    <td><input type="button" value="詳細" onclick="location.href='job_detail.html'"></td>
+  </tr>
+  <tr>
+    <td>108/03/05</td>
+    <td>5/4</td>
+    <td>否</td>
+    <td><input type="button" value="詳細" onclick="location.href='job_detail.html'"></td>
+  </tr>
+</table>
+<p>電梯派工</p>
+<table id="elevator_job" border=1px>
+  <tr>
+    <th>派工日期</th>
+    <th>服務人員</th>
+    <th>是否完成</th>
+    <th>備註</th>
+  </tr>
+  <tr>
+    <td>108/03/04</td>
+    <td>7</td>
+    <td>否</td>
+    <td><input type="button" value="詳細" onclick="location.href='job_detail.html'"></td>
+  </tr>
+  <tr>
+    <td>108/03/04</td>
+    <td>7</td>
+    <td>否</td>
+    <td><input type="button" value="詳細" onclick="location.href='job_detail.html'"></td>
+  </tr>
+  <tr>
+    <td>108/03/04</td>
+    <td>7</td>
+    <td>否</td>
+    <td><input type="button" value="詳細" onclick="location.href='job_detail.html'"></td>
+  </tr>
+  <tr>
+    <td>108/03/05</td>
+    <td>7</td>
+    <td>否</td>
+    <td><input type="button" value="詳細" onclick="location.href='job_detail.html'"></td>
+  </tr>
+  <tr>
+    <td>108/03/05</td>
+    <td>7</td>
+    <td>否</td>
+    <td><input type="button" value="詳細" onclick="location.href='job_detail.html'"></td>
+  </tr>
+  <tr>
+    <td>108/03/05</td>
+    <td>7</td>
+    <td>否</td>
+    <td><input type="button" value="詳細" onclick="location.href='job_detail.html'"></td>
+  </tr>
+</table>
+<p>維修派工</p>
+<table id="fix_job" border=1px>
+  <tr>
+    <th>派工日期</th>
+    <th>大樓名稱</th>
+    <th>服務人員</th>
+    <th>是否完成</th>
+    <th>備註</th>
+  </tr>
+  <tr>
+    <td>108/03/04</td>
+    <td>aaa</td>
+    <td>7</td>
+    <td>否</td>
+    <td><input type="button" value="詳細" onclick="location.href='job_detail_fix.html'"></td>
+  </tr>
+  <tr>
+    <td>108/03/04</td>
+    <td>bbb</td>
+    <td>7</td>
+    <td>否</td>
+    <td><input type="button" value="詳細" onclick="location.href='job_detail_fix.html'"></td>
+  </tr>
+  <tr>
+    <td>108/03/04</td>
+    <td>aaa</td>
+    <td>7</td>
+    <td>否</td>
+    <td><input type="button" value="詳細" onclick="location.href='job_detail_fix.html'"></td>
+  </tr>
+  <tr>
+    <td>108/03/05</td>
+    <td>ccc</td>
+    <td>7</td>
+    <td>否</td>
+    <td><input type="button" value="詳細" onclick="location.href='job_detail_fix.html'"></td>
+  </tr>
+  <tr>
+    <td>108/03/05</td>
+    <td>bbb</td>
+    <td>7</td>
+    <td>否</td>
+    <td><input type="button" value="詳細" onclick="location.href='job_detail_fix.html'"></td>
+  </tr>
+  <tr>
+    <td>108/03/05</td>
+    <td>aaa</td>
+    <td>7</td>
+    <td>否</td>
+    <td><input type="button" value="詳細" onclick="location.href='job_detail_fix.html'"></td>
+  </tr>
+</table>
+
+
+</div>
+
+
+</body>
+</html>

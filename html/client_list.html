@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>健璟內部管理系統</title>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<meta charset="utf-8">
+</head>
+ 
+<body>
+<aside style="float:left;width:240px;">
+<ul>
+    <li><a href="contract_list.html">合約</a></li>
+        <ul><a href="contract_add.html">新增合約</a></ul>
+    <li><a href="client_list.html">客戶</a></li>
+        <ul><a href="client_add.html">新增客戶</a></ul>
+        <ul><a href="client_list_miss.html">流失客戶</a></ul>
+    <li><a href="maintain_list.html">保養</a></li>
+        <ul><a href="maintain_add.php">新增保養</a></ul>
+    <li><a href="price_list.html">報價</a></li>
+        <ul><a href="price_add.html">新增報價</a></ul>
+    <li><a href="fix_list.html">維修</a></li>
+        <ul><a href="fix_add.html">新增維修</a></ul>
+  </ul>
+</aside>    
+    <form id="form1" name="form1" method="post" action="" > 
+    <input type="search" placeholder="請輸入大樓名稱">
+    <input type="search" placeholder="請輸入服務編碼">    
+    <input type="submit" value="搜尋" >
+    </form>
+    <table border="1" id="myTable">
+    <caption>客戶列表</caption>
+        <tr>
+            <td>大樓名稱</td>
+            <td>地址</td>
+            <td>主委</td>
+            <td>電話</td>
+            <td>詳細</td>        
+        </tr>
+        <tr>
+            <td>台中大國</td>
+            <td>台中市太平區中山路四段133巷21號</td>
+            <td>陳思萍</td>
+            <td>0955875169</td>
+            <td><input type="button" value="詳細" onclick="location.href='client_detail.html'"></td>
+        </tr>
+        <tr>
+            <td>藝術大街</td>
+            <td>台中市北屯區北平路四段52號</td>
+            <td>王經理</td>
+            <td>0919031868</td>
+            <td><input type="button" value="詳細" onclick="location.href='client_detail.html'"></td>
+        </tr>
+         <tr>
+            <td>大城喜市</td>
+             <td>台中市潭子區興華一路141巷91弄1號1樓</td>
+            <td>陳先生</td>
+            <td>0936829892</td>
+            <td><input type="button" value="詳細" onclick="location.href='client_detail.html'"></td>
+        </tr>
+    </table>
+    
+    
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    
+</body>    
+</html>

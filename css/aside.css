@@ -1,0 +1,161 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin: 0;
+  background-color: #fff;
+}
+
+header{
+  background-color:#343a40;
+  width: 100%;
+  margin: 0;
+  
+  position:relative;
+  font-size: 10px;
+  padding: 0.5rem 1rem;
+
+}
+
+h1{
+color: rgba(255, 255, 255, 0.7);
+text-align: center;
+}
+.image{
+position:relative;
+vertical-align:bottom;
+width:24px;
+height:24px;
+}
+
+.list{
+background: none;
+border: none;
+color:rgba(255, 255, 255, 0.8);
+font-size: 28px;
+position:absolute;
+margin: 10px 0px ;
+outline: none; 
+
+}
+
+.logout-btn{
+height: calc(1.5em + 0.75rem + 2px);
+padding: 0.375rem 0.75rem;
+font-size: 1rem;
+color: #fff;
+border: 1px solid #ced4da;
+border-radius: 0.25rem;
+background-color: 	rgba(240, 255, 255, 0.5);
+position:absolute;
+top:1rem;
+right:3rem;
+
+}
+
+.logout-btn:hover{
+color: #495057;
+background-color:rgba(240, 255, 255, 0.6);
+}
+.logout-btn:focus{
+box-shadow: 0;
+color: #495057;
+background-color:rgba(240, 255, 255, 0.7);
+outline:none;
+}
+
+#content{
+  overflow-x: hidden;
+  max-height: calc(100vh - 66.78px);
+}
+
+
+aside{
+
+  background-color: #1d2124;
+  float:left;
+  width: 90px;
+  height: auto;
+  min-height: calc(100vh - 66.78px);
+}
+/*上 右 下 左*/
+
+ul{ 
+padding-inline-start: 0px;
+color: rgba(255, 255, 255, 0.5);
+font-family:Microsoft JhengHei;
+font-weight:bold;
+text-align: center;
+font-size: 22px;
+letter-spacing:5px;
+/*
+width: 90px;
+font-family:cursive;
+font-size: 20px;
+margin: 15px 0px 15px 0px;*/
+}
+.span{
+  font-size: 15px;
+  display: block;
+}
+
+/*白框*/
+ul.select{
+padding-inline-start: 0px;
+
+background-color: rgba(255, 255, 255, 0.7);
+color: rgba(0, 0, 0, 0.9);
+
+}
+/*小選項*/
+li{
+padding-inline-start: 0px;
+color: rgba(0, 0, 0, 0.9);
+list-style-type:none;
+}
+
+li.select{
+color: rgba(0, 0,0, 0.9);
+background-color: whitesmoke;
+}
+ul:hover { 
+background-color:rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.7);
+}
+li:hover { 
+background-color: rgba(245, 245, 245,0.9);
+color: rgba(0, 0,0, 0.9);
+}
+
+/*列表變大樣式*/
+
+@media (min-width: 768px) {
+aside{
+  width: 225px;
+  min-height: calc(100vh - 66.78px);
+}
+/*上 右 下 左*/
+
+ul{ 
+padding-inline-start: 40px;
+/*font-size: 25px;*/
+margin: 15px 0px 15px 0px;
+text-align: left;
+}
+.span{
+font-size: 25px;
+  display:contents;
+}
+/*小選項*/
+li{
+padding-inline-start: 40px;
+
+}
+
+}
+
+

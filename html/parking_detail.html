@@ -1,0 +1,106 @@
+<html>
+<head>
+<title>健璟內部管理系統</title>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<meta charset="utf-8">
+<script>
+function edit(b){
+  var t=document.getElementById("edit");
+  if ($("#employee2").prop('disabled') == true) { 
+   $(".deletejob").show();
+   $("div#editshow").show();
+  $(".readonly").removeAttr("readonly");
+   $("#employee1").removeAttr("disabled");
+   $("#employee2").removeAttr("disabled");
+   
+   t.value="完成"; 
+    }
+  else{
+  $(".deletejob").hide();
+   $("div#editshow").hide();
+   $(".readonly").attr("readonly", "readonly");
+   $("#employee1").attr("disabled","disabled");
+   $("#employee2").attr("disabled","disabled");
+   
+    t.value="編輯"; 
+    } 
+}
+
+function deletework(r){
+var ii=r.parentNode.parentNode.rowIndex;
+var s=document.getElementById("work").rows[ii].cells[6];
+var change=s.innerHTML="<button onclick='addwork(this)'>+</button>";
+var a=document.getElementById("work").rows[ii]
+$('#waitmaintaintitle').after(a);
+}
+
+function addwork(i){
+var ii=i.parentNode.parentNode.rowIndex;
+var s=document.getElementById("waitmaintain").rows[ii].cells[6];
+var change=s.innerHTML="<td class='deletejob' style='display:none'><button  onclick='deletework(this)'>-</button>";
+var a=document.getElementById("waitmaintain").rows[ii]
+$('#worktitle').after(a);
+}
+
+</script>
+</head>
+<body>
+<aside style="float:left;width:240px;">
+<ul>
+    <li><a href="contract_list.html">合約</a></li>
+        <ul><a href="contract_add.html">新增合約</a></ul>
+    <li><a href="client_list.html">客戶</a></li>
+        <ul><a href="client_add.html">新增客戶</a></ul>
+        <ul><a href="client_list_miss.html">流失客戶</a></ul>
+    <li><a href="maintain_list.html">保養</a></li>
+        <ul><a href="maintain_add.php">新增保養</a></ul>
+    <li><a href="price_list.html">報價</a></li>
+        <ul><a href="price_add.html">新增報價</a></ul>
+    <li><a href="fix_list.html">維修</a></li>
+        <ul><a href="fix_add.html">新增維修</a></ul>
+  </ul>
+</aside>
+<div id="content" style="float:left;width:720px;">
+<h2>A#01-06</h2>
+<p>服務編碼：</p>
+<hr>
+<h3>規格</h3>
+<br>
+<br>
+<br>
+<br>
+<hr>
+<h3>更新零件表</h3>
+<table border="1px">
+  <tr>
+    <td>日期</td>
+    <td>更新項目</td>
+    <td>價錢</td>
+    <td>備註</td>
+  </tr>
+  <tr>
+    <td>108/03/10</td>
+    <td>油封</td>
+    <td>$3000</td>
+    <td></td>
+  </tr>
+</table>
+<hr>
+<h3>維修</h3>
+<table border="1px">
+  <tr>
+    <td>日期</td>
+    <td>維修原因</td>
+    <td>備註</td>
+  </tr>
+  <tr>
+    <td>108/03/11</td>
+    <td>維修項目</td>
+    <td><input type="button" value="查看維修單"></td>
+  </tr>
+</table>
+    <input type="button" onclick="history.back()" value="返回">
+</div>
+</body>
+</html>

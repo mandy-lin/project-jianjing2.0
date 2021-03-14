@@ -1,0 +1,188 @@
+<html>
+<head>
+<title>健璟內部管理系統</title>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<meta charset="utf-8">
+<script src="dist/sweetalert.js"></script>
+<link rel="stylesheet" href="dist/sweetalert.css">    
+</head>
+
+<script>
+//編輯
+function editdata(){
+      var edit_elements=document.getElementsByClassName("readonly")
+      for (i=0;i<edit_elements.length;i++){
+      edit_elements[i].removeAttribute("readonly");
+      edit_elements[i].style="border:inline";
+      edit_elements[i].removeAttribute("onclick");
+      edit_elements[i].removeAttribute("disabled");      
+      };
+      document.getElementById('save').style.display = "inline";
+      document.getElementById('edit').style.display = "none";
+ }
+function addRow(r) {
+   $("#Total").before("<tr><td><select><option value=''>選擇設備</option><option value='機械式停車設備'>機械式停車設備</option><option value='汽車升降機'>汽車升降機</option><option value='油壓式貨梯'>油壓式貨梯</option><option value='電梯'>電梯</option></select></td><td><select><option value=''>選擇日期</option><option value='每月'>每月</option><option value='單月'>單月</option></select></td><td><input type='number' onchange='Sum(this)' name='amount[]'></td><td><input type='number' onchange='Sum(this)' name='price[]'></td><td><input type='number' name='subtotal[]'></td><td><button onclick='addRow(this)' id='add'>新增</button></td></tr>");
+   $("#add").remove();
+
+}
+function deleteRow(r){
+  var tab = document.getElementById("myTable");
+    var i=r.parentNode.parentNode.rowIndex;
+  //console.log(i);
+    //alert(i);
+    tab.deleteRow(i);
+    var total=0;
+    $('input[name="subtotal[]"]').each(function(){
+        total += parseInt($(this).val())
+    });
+    $('#total').attr("value",total);
+    console.log('t',total);
+}
+function Sum(r){
+    var i=r.parentNode.parentNode;
+    var price=$(i).find('input[name="price[]"]').val();
+    console.log('p',price);
+    var amount=$(i).find('input[name="amount[]"]').val();
+    console.log('a',amount);
+    var sum=price*amount;
+    console.log('s',sum);
+    $(i).find('input[name="subtotal[]"]').attr("value",sum);
+    
+    var total=0;
+    $('input[name="subtotal[]"]').each(function(){
+        total += parseInt($(this).val())
+    });
+    $('#total').attr("value",total);
+    console.log('t',total);
+
+}
+//續約
+function renew(){
+    //alert('1');
+    swal({
+        title: "要續約嗎?",
+        text: "將會產生一份新的合約",
+        type: "warning",
+        showCancelButton: true,
+        //confirmButtonClass: "btn-danger",
+        confirmButtonText: "續約",
+        cancelButtonText: "取消",
+        closeOnConfirm: false,
+        closeOnCancel: false
+    },function(isConfirm) {
+        if (isConfirm) {
+            swal("續_______約!", "將會跳轉到續約頁面", "success");
+        } else {
+            //swal("不再續約", "此客戶將會移失", "warning");
+            swal({
+                title: "不再續約?",
+                text: "此客戶將會移失",
+                type: "error",
+                showCancelButton: true,
+                //confirmButtonClass: "btn-danger",
+                confirmButtonText: "不再續約",
+                cancelButtonText: "取消",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            })
+        }
+    });
+};    
+</script>    
+<body>
+<aside style="float:left;width:240px;">
+<ul>
+    <li><a href="contract_list.html">合約</a></li>
+        <ul><a href="contract_add.html">新增合約</a></ul>
+    <li><a href="client_list.html">客戶</a></li>
+        <ul><a href="client_add.html">新增客戶</a></ul>
+        <ul><a href="client_list_miss.html">流失客戶</a></ul>
+    <li><a href="maintain_list.html">保養</a></li>
+        <ul><a href="maintain_add.php">新增保養</a></ul>
+    <li><a href="price_list.html">報價</a></li>
+        <ul><a href="price_add.html">新增報價</a></ul>
+    <li><a href="fix_list.html">維修</a></li>
+        <ul><a href="fix_add.html">新增維修</a></ul>
+  </ul>
+</aside>
+<div id="content" style="float:left;width:720px;">
+    <table border="1" id="myTable">
+    <caption>合約詳細</caption>
+        <tr><td>甲方</td>
+            <td colspan="4"><input class="readonly" readonly="readonly"  style="border:none;outline:none;" value="XX大樓"></td></tr>
+        <tr>
+            <td>設備名稱</td>
+            <td>日期</td>
+            <td>數量</td>
+            <td>單價</td>
+            <td>總價</td>
+        </tr>
+        <tr><td>
+        <select class="readonly" disabled="disabled">
+            <option value=''>選擇設備</option>
+            <option value='機械式停車設備'>機械式停車設備</option>
+            <option value='汽車升降機'>汽車升降機</option>
+            <option value='乘客用電梯'>乘客用電梯</option>
+            <option value='油壓式貨梯'>油壓式貨梯</option>
+            <option value='貨梯昇降設備'>貨梯昇降設備</option>
+            <option value='電梯升降設備'>電梯升降設備</option>
+        </select></td><td><select class="readonly" disabled="disabled">
+            <option value=''>選擇日期</option>
+            <option value='每月'>每月</option>
+            <option value='單月'>單月</option>
+            <option value='雙月'>雙月</option>
+            <option value='半年'>半年</option>
+        </select></td>
+            <td><input class="readonly" type="number" readonly="readonly" form="form1" style="border:inline" onchange="Sum(this)" name="amount[]"></td>
+            <td><input class="readonly" type="number" readonly="readonly" form="form1" style="border:inline" onchange="Sum(this)" name="price[]"></td>
+            <td><input class="readonly" type="number" readonly="readonly" form="form1" style="border:inline" name="subtotal[]"></td>
+            
+        </tr>
+        <tr id="Total">
+            <td>總金額</td>
+            <td colspan="3"><input class="readonly" type="number" readonly="readonly" form="form1" style="border:inline" id="total"></td>
+            <td colspan="1"><input type="checkbox">未含稅</td>
+        </tr>
+        <tr>
+            <td>優惠總金額</td>
+            <td colspan="4"><input class="readonly" type="number" readonly="readonly" form="form1" style="border:inline"></td>
+        </tr>
+        <tr>
+            <td>實施日期</td>
+            <td colspan="4"><input class="readonly" type="date" readonly="readonly" form="form1" style="border:inline">至<input class="readonly" type="date" readonly="readonly" form="form1" style="border:inline"></td>
+        </tr>
+        <tr><td>保養次數</td><td colspan="4">
+        <select class="readonly" disabled="disabled">
+            <option value=''>選擇保養次數</option>
+            <option value='每月一次'>每月一次</option>
+            <option value='每月2次'>每月2次</option>
+             <option value='2個月1次'>2個月1次</option>
+            <option value='4個月1次'>4個月1次</option>
+            <option value='半年1次'>半年1次</option>
+            <option value='1年1次'>1年1次</option>
+        </select></td></tr>
+        <tr><td>責任</td><td colspan="4">
+        <select class="readonly" disabled="disabled">
+            <option value=''>選擇責任</option>
+            <option value='全責'>全責</option>
+            <option value='半責'>半責</option>
+             <option value='附表全責'>附表全責</option>
+            <option value='除外全責'>除外全責</option>
+        </select></td></tr>
+        <tr><td>備註</td><td colspan="4"><textarea class="readonly" readonly="readonly" form="form1" style="border:inline"></textarea></td>
+        </tr>
+        <tr><td>附表全責的圖</td><td colspan="4"><input type="file" class="readonly" disabled="disabled"></td></tr>
+        <tr><td>合約電子檔</td><td colspan="4"><input type="file" class="readonly" disabled="disabled"></td></tr>
+       
+    </table>
+    <form id="form1" name="form1" method="post" action="">
+          <!--button id="edit"  name="edit" type="button" onClick="editdata()" style="display:inline" >編輯</button-->
+        <input type="button" onclick="history.back()" value="返回">  
+        <button id="save"  name="save" type="sumbit"  style="display:none">儲存</button>
+          <button id="edit"  type="button"  style="display:inline" onclick="renew()">續約</button>
+    </form>
+    </div>   
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    
+</body>    
+</html>

@@ -1,0 +1,111 @@
+
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+  <style type="text/css">
+  	*{margin: 0;padding: 0;list-style: none;text-decoration: none;}
+  	.main{width: 400px;height: 410px;border:1px solid #ddd;margin:100px auto;}
+  	.main ul{display: table;width: 100%;}
+  	.main ul li
+  	{
+		display: table-cell;
+		line-height: 40px;
+		text-align: center; 
+		cursor: pointer;
+		background:#ddd;
+  	}
+  	.main ul li + li{border-left:1px solid #fff;}
+  	.main ul li.active{background:green;font-weight: 700;color:#fff;}
+  	.con
+  	{
+  		width: 100%;
+  		height: 330px;
+  		background: #f2f2f2;
+  		text-align: center;
+  		line-height: 330px;
+  		font-weight: 700;
+      display: none;
+  	}
+  	.footer{margin-top: 5px;line-height: 30px;padding: 0 15px;overflow: hidden;font-size: 12px;}
+  	.footer a{display: inline-block;padding: 0px 10px;background: #ddd;color: #333;}
+  	.prve{float: left;}
+  	.next{float: right;}
+    .con.show{display: block;}
+  </style>
+ </head>
+ <body>
+  	<div class="main">
+  		<ul>
+  			<li class="active">tab1</li>
+  			<li>tab2</li>
+  			<li>tab3</li>
+  		</ul>
+  		<div class="ConItem">
+	  		<div class="con show">内容1</div>
+	  		<div class="con">内容2</div>
+	  		<div class="con">内容3</div>
+	  	</div>
+  		<div class="footer">
+  			<a class="prve" href="javascript:void(0);">上一步</a>
+  			<a class="next" href="javascript:void(0);">下一步</a>
+  		</div>
+  	</div>
+	<!--js-->
+	<script type="text/javascript">
+		$(function(){
+			//Tab切换
+			$(".main ul li").click(function(){
+				$(this).addClass('active')
+					   .siblings()
+					   .removeClass('active');
+				$(".ConItem .con").removeClass('show');
+				$(".ConItem .con").eq($(this).index()).addClass('show');
+			});
+			//上一步下一步功能
+			$(".prve").click(function(){
+        var Index = 0;
+				$(".main ul li").each(function(index){
+					var hasClass = $($(".main ul li").get(index)).hasClass('active');
+          var hasClass2 = $($(".ConItem .con").get(index)).hasClass('show');
+          if(hasClass){
+            if(index>=1){
+              $($(".main ul li").get(index)).removeClass("active");
+              $($(".main ul li").get(index-1)).addClass("active")
+              $($(".ConItem .con").get(index)).removeClass("show");
+              $($(".ConItem .con").get(index-1)).addClass("show");
+            }
+          }
+				});
+			});
+
+      $(".next").click(function(){
+        var ThisIndex = $(".main ul li").length;
+        var Index = 0;
+        $(".main ul li").each(function(index){
+          var hasClass = $($(".main ul li").get(index)).hasClass('active');
+          var hasClass2 = $($(".ConItem .con").get(index)).hasClass('show');
+          console.log(hasClass);
+          if(hasClass){
+            if(index <= ThisIndex -1){
+              Index=index;
+            }
+          }
+        });
+        if(Index < ThisIndex -1){
+          $($(".main ul li").get(Index)).removeClass("active");
+          $($(".main ul li").get(Index+1)).addClass("active")
+          $($(".ConItem .con").get(Index)).removeClass("show");
+          $($(".ConItem .con").get(Index+1)).addClass("show"); 
+        }
+      });
+		});
+	</script>
+ </body>
+</html>

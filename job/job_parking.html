@@ -1,0 +1,183 @@
+<html>
+<head>
+<link rel="icon" href="../img/jj.ico" type="image/x-icon" />
+<title>健璟內部管理系統</title>
+<meta charset="utf-8"> 
+</head>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script> 
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $(document).ready(function(){
+      //tr上下拖動
+    $("#work").sortable({  
+      cursor: "move",  
+      items: "tr",  //只是tr可以拖動  
+      opacity: 1.0,  //拖動時，透明度為0.6  
+      revert: false,  //釋放時，增加動畫  
+      update: function(event, ui) {//更新排序之後 
+          var categoryids = $(this).sortable("toArray");  
+          var $this = $(this);  
+        }  
+      });  
+    $("#work").disableSelection(); 
+
+    });
+/*$('#work tbody').mousedown(function (e) {
+  var tr = $(e.target).closest('tr'), sy = e.pageY, drag;
+  if ($(e.target).is('tr')) tr = $(e.target);
+  var index = tr.index();
+  $(tr).addClass('grabbed');
+  function move (e) {
+    if (!drag && Math.abs(e.pageY - sy) < 10) return;
+    drag = true;
+    tr.siblings().each(function() {
+      var s = $(this), i = s.index(), y = s.offset().top;
+      if (e.pageY >= y && e.pageY < y + s.outerHeight()) {
+        if (i < tr.index()) s.insertAfter(tr);
+        else s.insertBefore(tr);
+        return false;
+      }
+    });
+  }
+  function up (e) {
+    if (drag && index != tr.index()) {
+      drag = false;
+    }
+    $(document).unbind('mousemove', move).unbind('mouseup', up);
+    $(tr).removeClass('grabbed');
+  }
+  $(document).mousemove(move).mouseup(up);
+});*/
+
+function addwork(i){
+var ii=i.parentNode.parentNode.rowIndex;
+var s=document.getElementById("waitmaintain").rows[ii].cells[6];
+var change=s.innerHTML="<button onclick='deletework(this)'>-</button>";
+var a=document.getElementById("waitmaintain").rows[ii]
+$('#worktitle').after(a);
+}
+
+function deletework(r){
+var ii=r.parentNode.parentNode.rowIndex;
+var s=document.getElementById("work").rows[ii].cells[6];
+var change=s.innerHTML="<button onclick='addwork(this)'>+</button>";
+var a=document.getElementById("work").rows[ii]
+$('#waitmaintaintitle').after(a);
+}
+
+</script>    
+
+<body>
+<aside style="float:left;width:240px;">
+<ul>
+    <il>合約</il>
+    <ul>
+      <il><a href="contract.html">新增合約</a></il>
+    </ul>
+    <li>客戶</li>
+      <ul>
+        <a href="client_add0221.html">新增客戶</a>
+      </ul>
+    <li>保養</li>
+      <ul>
+        <li><a href="maintain.php">保養</a></li>
+      </ul>
+    <!--li><a href="job_list.html">派工</a></li>
+      <ul>
+        <li><a href="job_parking.html">停車派工</a></li>
+        <li><a href="job_elevator.html">電梯派工</a></li>
+        <li><a href="job_fix.html">維修派工</a></li>
+      </ul-->
+    <li><a href="price.html">報價</a></li>
+    <li><a href="fix.html">維修</a></li>
+  </ul>
+</aside>
+<div id="content" style="float:left;width:720px;">
+  <h2>派工單(停車)</h2>
+  <p>日期:<input type="date">服務人員:<select id='employee1'><option>請選擇</option><option>洪歆益</option><option>劉繹豪</option><option>曾公鳴</option><option>徐嘉偉</option><option>高得瑋</option><option>陳弘翔</option><option>黃國賢</option><option>陳品翰</option><option>李聖偉</option><option>陳松懋</option><option>張苡偉</option><option>鍾健文</option></select><select id='employee2'><option>請選擇</option><option>洪歆益</option><option>劉繹豪</option><option>曾公鳴</option><option>徐嘉偉</option><option>高得瑋</option><option>陳弘翔</option><option>黃國賢</option><option>陳品翰</option><option>李聖偉</option><option>陳松懋</option><option>張苡偉</option><option>鍾健文</option></select></p>
+  <table border="1" id="work">
+    <tr id="worktitle">
+      <th>APP</th>
+      <th colspan="2">大樓名稱</th>
+      <th >責任</th>
+      <th>保養時間</th>
+      <th>通知</th>
+      <th>備註</th>
+    </tr>  
+    <tbody>
+    <tr>
+      <td class='index'></td>
+      <td colspan="2">博愛齊家</td>
+      <td>半責主機、子機</td>
+      <td></td>
+      <td>√</td>
+      <td>早上保養，管理員14:00下班</td>
+      <td><button onclick="deletework(this)">-</button></td>
+    </tr>
+    </tbody>
+  </table>
+  <p></p>
+  <table border="1" id="waitmaintain">
+    <tr id='waitmaintaintitle'>
+      <td>APP</td>
+      <td colspan="2">大樓名稱</td>
+      <td>責任</td>
+      <td>保養時間</td>
+      <td>通知</td>
+      <td>備註</td>
+      <td></td>
+    </tr>
+    <tbody>
+    <tr>
+      <td class='index'>*</td>
+      <td colspan="2">名帝寶座</td>
+      <td>半責</td>
+      <td>40分鐘</td>
+      <td></td>
+      <td></td>
+      <td><button onclick="addwork(this)">+</button></td>
+    </tr>
+    <tr>
+      <td class='index'></td>
+      <td colspan="2">后里詹公館</td>
+      <td>半責</td>
+      <td>30分鐘</td>
+      <td>√</td>
+      <td>2556-2590、0939-562590 前往先確認是否有人在家
+      </td>
+      <td><button onclick="addwork(this)">+</button></td>
+    </tr>
+    <tr>
+      <td class='index'></td>
+      <td colspan="2">喜臨門</td>
+      <td>半責</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><button onclick="addwork(this)">+</button></td>
+    </tr>
+    <tr>
+      <td class='index'></td>
+      <td colspan="2">合作新芳鄰</td>
+      <td>半責子機</td>
+      <td></td>
+      <td>√</td>
+      <td>送請款單</td>
+      <td><button onclick="addwork(this)">+</button></td>
+    </tr>
+    <tr>
+      <td class='index'></td>
+      <td colspan="2">房事心歡</td>
+      <td>半責主機、子機</td>
+      <td></td>
+      <td>主委劉先生(28號6樓)0937-744280</td>
+      <td>帶遙控器自行進入保養(勿按門鈴)，保養後請主委簽名，若主委不在打電話告知主委並寫進出時間</td>
+      <td><button onclick="addwork(this)">+</button></td>
+    </tr>
+    </tbody>
+    </table>
+    <p align="right"><input type="button" value="列印">  <input type="button" value="完成"></p>
+    </div>
+</body>    
+</html>

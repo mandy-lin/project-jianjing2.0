@@ -1,0 +1,101 @@
+<html>
+<head>
+<link rel="icon" href="../img/jj.ico" type="image/x-icon" />
+<title>健璟內部管理系統</title>
+<link rel=stylesheet href=/project/css/home.css>
+<link rel=stylesheet href=/project/css/table-client.css>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script> 
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<meta charset="utf-8">
+<script>
+function edit(b){
+  var t=document.getElementById("edit");
+  if ($("#employee2").prop('disabled') == true) {
+   alert("true")  
+   $(".deletejob").show();
+   $("div#editshow").show();
+  $(".readonly").removeAttr("readonly");
+   $("#employee1").removeAttr("disabled");
+   $("#employee2").removeAttr("disabled");
+   
+   t.value="完成"; 
+    }
+  else{
+  alert("false");
+  $(".deletejob").hide();
+   $("div#editshow").hide();
+   $(".readonly").attr("readonly", "readonly");
+   $("#employee1").attr("disabled","disabled");
+   $("#employee2").attr("disabled","disabled");
+   
+    t.value="編輯"; 
+    } 
+}
+
+function deletework(r){
+var ii=r.parentNode.parentNode.rowIndex;
+var s=document.getElementById("work").rows[ii].cells[6];
+var change=s.innerHTML="<button onclick='addwork(this)'>+</button>";
+var a=document.getElementById("work").rows[ii]
+$('#waitmaintaintitle').after(a);
+}
+
+function addwork(i){
+var ii=i.parentNode.parentNode.rowIndex;
+var s=document.getElementById("waitmaintain").rows[ii].cells[6];
+var change=s.innerHTML="<td class='deletejob' style='display:none'><button  onclick='deletework(this)'>-</button>";
+var a=document.getElementById("waitmaintain").rows[ii]
+$('#worktitle').after(a);
+}
+
+</script>
+</head>
+<body>
+<aside style="float:left;width:240px;">
+<ul>
+    <il>合約</il>
+    <ul>
+      <il><a href="contract.html">新增合約</a></il>
+    </ul>
+    <li>客戶</li>
+      <ul>
+        <a href="client_add0221.html">新增客戶</a>
+      </ul>
+    <li>保養</li>
+      <ul>
+        <li><a href="maintain.php">保養</a></li>
+      </ul>
+    <!--li><a href="job_list.html">派工</a></li>
+      <ul>
+        <li><a href="job_parking.html">停車派工</a></li>
+        <li><a href="job_elevator.html">電梯派工</a></li>
+        <li><a href="job_fix.html">維修派工</a></li>
+      </ul-->
+    <li><a href="price.html">報價</a></li>
+    <li><a href="fix.html">維修</a></li>
+  </ul>
+</aside>
+<h2>派工</h2>
+<h3>108/03/04</h3>
+<div class="parking" style="border=1px;width:200px;height:300px;float:left;background-color:#FFD4D4;margin: 10px;">
+后里詹公館<br>
+名帝寶座
+<p align="right"><button onclick="location.href='job_detail.html'">→</button></p>
+<hr width="180">
+
+</div>
+<div class="elevator" style="width:200px;height:300px;float:left;background-color:#FFD777;margin: 10px;">衛道三星
+<p align="right"><button onclick="location.href='job_detail.html'">→</button></p>
+<hr width="180">
+</div>
+<div class="fix" style="width:200px;height:300px;float:left;background-color:#FDF999;margin: 10px;">張公館
+<p align="right"><button onclick="location.href='job_detail_fix.html'">→</button></p>
+<hr width="180">
+</div>
+ 
+    
+
+</body>
+</html>

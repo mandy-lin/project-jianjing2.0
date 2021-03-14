@@ -1,0 +1,144 @@
+<html>
+<head>
+<title>健璟內部管理系統</title>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://rawgithub.com/indrimuska/jquery-editable-select/master/dist/jquery-editable-select.min.css">    
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://rawgithub.com/indrimuska/jquery-editable-select/master/dist/jquery-editable-select.min.js"></script>     
+    
+
+<script>
+function addRow(r) {
+  //增加一行
+   $("#Total").before("<tr><td><select><option value=''>選擇設備</option><option value='機械式停車設備'>機械式停車設備</option><option value='汽車升降機'>汽車升降機</option><option value='油壓式貨梯'>油壓式貨梯</option><option value='電梯'>電梯</option></select></td><td><select><option value=''>選擇日期</option><option value='每月'>每月</option><option value='單月'>單月</option></select></td><td><input type='number' onchange='Sum(this)' name='amount[]'></td><td><input type='number' onchange='Sum(this)' name='price[]'></td><td><input type='number' name='subtotal[]'></td><td><button onclick='addRow(this)' id='add'>新增</button></td></tr>");
+   $("#add").remove();
+
+}
+function deleteRow(r){
+  var tab = document.getElementById("myTable");
+    var i=r.parentNode.parentNode.rowIndex;
+  //console.log(i);
+    //alert(i);
+    tab.deleteRow(i);
+    var total=0;
+    $('input[name="subtotal[]"]').each(function(){
+        total += parseInt($(this).val())
+    });
+    $('#total').attr("value",total);
+    console.log('t',total);
+}
+function Sum(r){
+    var i=r.parentNode.parentNode;
+    var price=$(i).find('input[name="price[]"]').val();
+    console.log('p',price);
+    var amount=$(i).find('input[name="amount[]"]').val();
+    console.log('a',amount);
+    var sum=price*amount;
+    console.log('s',sum);
+    $(i).find('input[name="subtotal[]"]').attr("value",sum);
+    
+    var total=0;
+    $('input[name="subtotal[]"]').each(function(){
+        total += parseInt($(this).val())
+    });
+    $('#total').attr("value",total);
+    console.log('t',total);
+
+}
+//選擇客戶    
+$(document).ready(function() {
+    $('#clientname').editableSelect().on('select.editable-select', function (e, li) {
+        console.log(li.text());
+        $("#myTable").css('display','');
+        $('#contractname').val(li.text());
+    });
+});     
+
+</script> 
+  
+<body>
+<aside style="float:left;width:240px;">
+<ul>
+    <li><a href="contract_list.html">合約</a></li>
+        <ul><a href="contract_add.html">新增合約</a></ul>
+    <li><a href="client_list.html">客戶</a></li>
+        <ul><a href="client_add.html">新增客戶</a></ul>
+        <ul><a href="client_list_miss.html">流失客戶</a></ul>
+    <li><a href="maintain_list.html">保養</a></li>
+        <ul><a href="maintain_add.php">新增保養</a></ul>
+    <li><a href="price_list.html">報價</a></li>
+        <ul><a href="price_add.html">新增報價</a></ul>
+    <li><a href="fix_list.html">維修</a></li>
+        <ul><a href="fix_add.html">新增維修</a></ul>
+  </ul>
+</aside>
+<div id="content" style="float:left;width:720px;">
+
+   
+    <select id="clientname">
+        <option value='北京王府'>北京王府</option>
+        <option value='寶新敦品'>寶新敦品</option>
+    </select><input type="button" value="新增客戶" onclick="location.href='client_add.html'">    
+    <table  id="myTable" style="border:1px solid;display:none ;">
+    <caption>新增保養合約</caption>
+        <tr><td>甲方</td><td colspan="5"><input id="contractname" value="" style="border:0;outline:none;"></td>
+        </tr>
+        <tr><td>設備名稱</td><td>日期</td><td>數量</td><td>單價</td><td>總價</td><td></td>
+        </tr>
+        <tr><td>
+        <select>
+            <option value=''>選擇設備</option>
+            <option value='機械式停車設備'>機械式停車設備</option>
+            <option value='汽車升降機'>汽車升降機</option>
+            <option value='乘客用電梯'>乘客用電梯</option>
+            <option value='油壓式貨梯'>油壓式貨梯</option>
+            <option value='貨梯昇降設備'>貨梯昇降設備</option>
+            <option value='電梯升降設備'>電梯升降設備</option>
+        </select></td><td><select>
+            <option value=''>選擇日期</option>
+            <option value='每月'>每月</option>
+            <option value='單月'>單月</option>
+            <option value='雙月'>雙月</option>
+            <option value='半年'>半年</option>
+        </select></td>
+            <td><input type="number" onchange="Sum(this)" name="amount[]"></td>
+            <td><input type="number" onchange="Sum(this)" name="price[]"></td>
+            <td><input type="number" name="subtotal[]"></td><td><button onclick="addRow(this)" id="add">新增</button></td>
+        </tr>
+        <tr id="Total"><td>總金額</td><td colspan="3"><input type="number" id="total"></td><td colspan="2"><input type="checkbox">未含稅</td>
+        </tr>
+        <tr><td>優惠總金額</td><td colspan="5"><input type="number"></td>
+        </tr>
+        <tr><td>實施日期</td><td colspan="5"><input type="date">至<input type="date"></td></tr>
+        <tr><td>保養次數</td><td colspan="5">
+        <select>
+            <option value=''>選擇保養次數</option>
+            <option value='每月一次'>每月一次</option>
+            <option value='每月2次'>每月2次</option>
+             <option value='2個月1次'>2個月1次</option>
+            <option value='4個月1次'>4個月1次</option>
+            <option value='半年1次'>半年1次</option>
+            <option value='1年1次'>1年1次</option>
+        </select></td></tr>
+        <tr><td>責任</td><td colspan="5">
+        <select>
+            <option value=''>選擇責任</option>
+            <option value='全責'>全責</option>
+            <option value='半責'>半責</option>
+             <option value='附表全責'>附表全責</option>
+            <option value='除外全責'>除外全責</option>
+        </select></td></tr>
+        <tr><td>備註</td><td colspan="5"><textarea></textarea></td>
+        </tr>
+        <tr><td>附表全責的圖</td><td colspan="5"><input type="file"></td></tr>
+        <tr><td>合約電子檔</td><td colspan="5"><input type="file"></td></tr>
+        <tr><td><input type="button" value="新增"></td></tr>
+    </table>
+    
+    </div>   
+    
+    
+</body>    
+</html>

@@ -1,0 +1,118 @@
+<html>
+<head>
+<title>健璟內部管理系統</title>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<meta charset="utf-8">
+</head>
+ <script>
+function editdata(){
+      var edit_elements=document.getElementsByClassName("readonly")
+      for (i=0;i<edit_elements.length;i++){
+      edit_elements[i].removeAttribute("readonly");
+      edit_elements[i].style="border:inline";
+      edit_elements[i].removeAttribute("onclick");
+      edit_elements[i].removeAttribute("disabled");  
+      };
+      document.getElementById('save').style.display = "inline";
+      document.getElementById('edit').style.display = "none";
+ }
+</script>
+<body>
+<aside style="float:left;width:240px;">
+<ul>
+    <li><a href="contract_list.html">合約</a></li>
+        <ul><a href="contract_add.html">新增合約</a></ul>
+    <li><a href="client_list.html">客戶</a></li>
+        <ul><a href="client_add.html">新增客戶</a></ul>
+        <ul><a href="client_list_miss.html">流失客戶</a></ul>
+    <li><a href="maintain_list.html">保養</a></li>
+        <ul><a href="maintain_add.php">新增保養</a></ul>
+    <li><a href="price_list.html">報價</a></li>
+        <ul><a href="price_add.html">新增報價</a></ul>
+    <li><a href="fix_list.html">維修</a></li>
+        <ul><a href="fix_add.html">新增維修</a></ul>
+  </ul>
+</aside>
+<div id="content" style="float:left;width:720px;">
+    <table border="1" id="myTable">
+    <caption>維修單詳細</caption>
+        <tr>
+        <td>設備名稱</td><td><input type="text" readonly="readonly" form="form1" style="border:0px;outline:none;"  value="機械式停車設備"></td>
+        <td>維修日期</td><td><input class="readonly" type="date" readonly="readonly" form="form1" style="border:0px;outline:none;"></td>
+        </tr>
+        <tr><td>大樓名稱</td><td colspan="3"><input type="text" readonly="readonly" form="form1" style="border:0px;outline:none;"  value="XX大樓"></td></tr>
+        <tr><td>故障情形</td><td colspan="3"><textarea class="readonly" readonly="readonly" form="form1" style="border:0px;outline:none;"></textarea></td></tr>
+        <tr><td>故障原因</td><td colspan="3"><textarea class="readonly" readonly="readonly" form="form1" style="border:0px;outline:none;"></textarea></td></tr>
+        <tr><td>維修內容</td><td colspan="3"><textarea class="readonly" readonly="readonly" form="form1" style="border:0px;outline:none;"></textarea></td></tr>
+        <tr><td colspan="4" style="text-align: center;">更新零件</td></tr>
+        <tr><td colspan="2">內容</td><td>價格</td><td>備註</td></tr>
+        <tr><td><select class="readonly" disabled="disabled" style="border:0px;outline:none;">
+            <option value=''>服務編號</option>
+            <option value=''>123</option>
+            <option value=''>456</option>            
+            </select>
+            </td><td>
+            <input type="text" class="readonly" readonly="readonly" form="form1" style="border:0px;outline:none;"></td>
+            <td><input type="number" class="readonly" readonly="readonly" form="form1" style="border:0px;outline:none;"></td><td><input class="readonly" readonly="readonly" form="form1" style="border:0px;outline:none;"></td></tr>
+        <tr><td><select class="readonly" disabled="disabled" style="border:0px;outline:none;">
+            <option value=''>服務編號</option>
+            <option value=''>123</option>
+            <option value=''>456</option>            
+            </select>
+            </td><td>
+            <input type="text" class="readonly" readonly="readonly" form="form1" style="border:0px;outline:none;"></td>
+            <td><input type="number" class="readonly" readonly="readonly" form="form1" style="border:0px;outline:none;"></td><td><input class="readonly" readonly="readonly" form="form1" style="border:0px;outline:none;"></td></tr><tr><td><select class="readonly" disabled="disabled" style="border:0px;outline:none;">
+            <option value=''>服務編號</option>
+            <option value=''>123</option>
+            <option value=''>456</option>            
+            </select>
+            </td><td>
+            <input type="text" class="readonly" readonly="readonly" form="form1" style="border:0px;outline:none;"></td>
+            <td><input type="number" class="readonly" readonly="readonly" form="form1" style="border:0px;outline:none;"></td><td><input class="readonly" readonly="readonly" form="form1" style="border:0px;outline:none;"></td></tr><tr><td><select class="readonly" disabled="disabled" style="border:0px;outline:none;">
+            <option value=''>服務編號</option>
+            <option value=''>123</option>
+            <option value=''>456</option>            
+            </select>
+            </td><td>
+            <input type="text" class="readonly" readonly="readonly" form="form1" style="border:0px;outline:none;"></td>
+            <td><input type="number" class="readonly" readonly="readonly" form="form1" style="border:0px;outline:none;"></td><td><input class="readonly" readonly="readonly" form="form1" style="border:0px;outline:none;"></td></tr><tr><td><select class="readonly" disabled="disabled" style="border:0px;outline:none;">
+            <option value=''>服務編號</option>
+            <option value=''>123</option>
+            <option value=''>456</option>            
+            </select>
+            </td><td>
+            <input type="text" class="readonly" readonly="readonly" form="form1" style="border:0px;outline:none;"></td>
+            <td><input type="number" class="readonly" readonly="readonly" form="form1" style="border:0px;outline:none;"></td><td><input class="readonly" readonly="readonly" form="form1" style="border:0px;outline:none;"></td></tr>
+        <tr><td>服務人員</td>
+        <td colspan="3"><select class="readonly" disabled="disabled">
+            <option value=''>工作人員</option>
+            <option value='黃國賢'>黃國賢</option>
+            <option value='劉繹豪'>劉繹豪</option>
+            <option value='洪歆益'>洪歆益</option>
+            <option value='徐嘉偉'>徐嘉偉</option>
+            <option value='李嘉宏'>李嘉宏</option>
+            <option value='陳品翰'>陳品翰</option>
+            <option value='陳松懋'>陳松懋</option></select>
+            <select class="readonly" disabled="disabled">
+            <option value=''>工作人員</option>
+            <option value='黃國賢'>黃國賢</option>
+            <option value='劉繹豪'>劉繹豪</option>
+            <option value='洪歆益'>洪歆益</option>
+            <option value='徐嘉偉'>徐嘉偉</option>
+            <option value='李嘉宏'>李嘉宏</option>
+            <option value='陳品翰'>陳品翰</option>
+            <option value='陳松懋'>陳松懋</option></select>
+        </td>
+        </tr>
+        <tr><td>維修圖</td><td colspan="3"><input type="file" class="readonly" disabled="disabled"></td></tr>
+    </table>
+    <form id="form1" name="form1" method="post" action="">
+          <button id="edit"  name="edit" type="button" onClick="editdata()" style="display:inline" >編輯</button>
+          <button id="save"  name="save" type="sumbit"  style="display:none">儲存</button>
+        <input type="button" onclick="history.back()" value="返回">
+    </form>
+    </div>  
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>    
+</body>    
+</html>
