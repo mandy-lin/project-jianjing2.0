@@ -1,59 +1,46 @@
-�@�B�t�Ϋe�m�@�~
-1.�w��XAMPP���A��
-https://ithelp.ithome.com.tw/articles/10197921
+實習專案，以上一個專題為基礎，做資料庫結構改變、功能的新增，優化系統。
 
-2.�N����Ƨ���iC:/xampp/htdocs
+系統功能：
+除了提供使用者進行保養、維修、訂單、報價等日常排程功能，新增了合約、流失客戶以及服務人員的功能。
+應用了datatable、startbootstrap、sweetalert等套件。
 
-3.�U��chrome�X�R�A�H�K�t�Ϊ����w��
-https://chrome.google.com/webstore/detail/office-editing-for-docs-s/gbkeegbaiigmenfmjfclcdgdpimamgkj?hl=zh-TW
+系統軟體： 開發工具：XAMPP Control Panel v3.2.2 資料庫軟體：My SQL 開發語言：PHP、HTML5、Java Script、CSS
 
-4.�}�Ҧ��A��xampp/xampp-control�AApache�PMySQL�}��
+三、如何使用系統
+1.首先"新增客戶"，必填欄位:基本資料的"大樓名稱"、產品資料、聯絡方式，完成請在"收款方式"中按下新增。
 
-5.�b�s���������}��Ʈw�A127.0.0.1/phpmyadmin�A�åB�פJ����Ƨ���test.sql
+2."新增合約"，選擇以建立的客戶，若沒有可按"新增客戶"。
+甲方名稱可變更，(右邊新增可新增下一列合約內容)，必填選項:設備名稱、日期、實施日期、保養次數(系統將會自動新增合約期間內所需的保養單)，完成後按下新增。
+※請注意合約新增後無法做編輯動作
 
+3."新增報價"，選擇客戶，輸入報價日期、選擇產品，選擇服務編號並輸入報價內容，完成後按下新增。
 
-
-�G�B�p��}�Ҩt��
-1.�}�Ҧ��A��xampp/xampp-control�AApache�PMySQL�}��
-
-2.�}���s�����ÿ�J
-127.0.0.1/1/index.html(�������}/����Ƨ��W��/index.html)
-
-�T�B�p��ϥΨt��
-1.����"�s�W�Ȥ�"�A�������:�򥻸�ƪ�"�j�ӦW��"�B���~��ơB�p���覡�A�����Цb"���ڤ覡"�����U�s�W�C
-
-2."�s�W�X��"�A��ܥH�إߪ��Ȥ�A�Y�S���i��"�s�W�Ȥ�"�C
-�Ҥ�W�٥i�ܧ�A(�k��s�W�i�s�W�U�@�C�X�����e)�A����ﶵ:�]�ƦW�١B����B��I����B�O�i����(�t�αN�|�۰ʷs�W�X���������һݪ��O�i��)�A��������U�s�W�C
-���Ъ`�N�X���s�W��L�k���s��ʧ@
-
-3."�s�W����"�A��ܫȤ�A��J��������B��ܲ��~�A��ܪA�Ƚs���ÿ�J�������e�A��������U�s�W�C
-
-4."�s�W����"�A��ܫȤ�A��J��ܲ��~�B���פ���A��ܪA�Ƚs���ÿ�J���פ��e�B��s�s��A��������U�s�W�C
+4."新增維修"，選擇客戶，輸入選擇產品、維修日期，選擇服務編號並輸入維修內容、更新零件，完成後按下新增。
 
 
-5.�Ȥ�޲z�A�i��"�j�ӦW��"�B"�a�}"�B"�A�Ƚs��"�i��j�M�A���y�Ȥ�Բӥi��ݦ��Ȥ�Ҧ���ơC
+5.客戶管理，可依"大樓名稱"、"地址"、"服務編號"進行搜尋，典籍客戶詳細可察看此客戶所有資料。
 
-6.�X���޲z�A�i�d�ݩҦ��X���C
+6.合約管理，可查看所有合約。
 
-"���"�A�I��"���"���i�̷Ӧ��X���s�W�@���s�X���F�I��"����"/"���A���"�����Ȥ�N�ର�y���Ȥ�
+"續約"，點擊"續約"→可依照此合約新增一份新合約；點擊"取消"/"不再續約"→此客戶將轉為流失客戶
 
-"�y���Ȥ�"���Y�Ȥ᭫�sñ���A�i��"���s�إߦX��"�A�إߤ@���s�X�����Ȥ�N���A�y���C
+"流失客戶"→若客戶重新簽約，可按"重新建立合約"，建立一份新合約此客戶將不再流失。
 
 
-7."�O�i�޲z"�A�N�|��ܥ]�t����H�e���O�i��A�i�Q�ηj�M�M��C
+7."保養管理"，將會放至包含本月以前的保養單，可利用搜尋尋找。
 
-"�Բ�"���O�i���������A������K�j�M�C
+"詳細"→保養日期為必填，為日後方便搜尋。
 
-8."�����޲z"�A���A���T�ӡA�i�b�޲z�����i��j�M�C
-�i���e�X�j�w�إ߳����楼�e�ܫȤ�A���w�]���A�A���U"�s��"�i��窱�A�A�Y���ݧ����U"�x�s"�Y�i�F
-�i�w�e�X�j�w�N������e�ܫȤ�A�Y�Ȥ�w�T�{���A�i����ʧ@�A�i��"�Ȥ�w�T�{"�A�N�L�k�A�����F
-�i�wñ�^�j�����A���Ȥ�w�T�{���A�i����C���Ъ`�N�����A�N�L�k�A�i��s��C
+8."報價管理"，狀態有三個，可在管理頁面進行搜尋。
+【未送出】已建立報價單未送至客戶，為預設狀態，按下"編輯"可更改狀態，若不需更改按下"儲存"即可；
+【已送出】已將報價單送至客戶，若客戶已確認不再進行更改動作，可按"客戶已確認"，將無法再次更改；
+【已簽回】此狀態為客戶已確認不再進行更改。※請注意此狀態將無法再進行編輯。
 
-9."���׺޲z"�A���i�s��A�̷̳s����i��ƧǡC
+9."維修管理"，都可編輯，依最新日期進行排序。
 
-10."�A�ȤH��"�A�i�i��s��A
-�Y�ݷs�W�A�ȤH���A���U"�s�W�A�ȤH��"/"�x�s"�A�Y�ݭn�s�W���H�W�i��"+"�C
-�Y�ݭn�R���A�i���U"�s��"/"X�R��"/"�x�s"�C
+10."服務人員"，可進行編輯，
+若需新增服務人員，按下"新增服務人員"/"儲存"，若需要新增兩位以上可按"+"。
+若需要刪除，可按下"編輯"/"X刪除"/"儲存"。
 
 
 
